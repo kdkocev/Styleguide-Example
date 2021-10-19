@@ -37,6 +37,7 @@ LOCAL_APPS = [
     'styleguide_example.tasks.apps.TasksConfig',
     'styleguide_example.api.apps.ApiConfig',
     'styleguide_example.users.apps.UsersConfig',
+    'styleguide_example.authentication.apps.AuthenticationConfig'
 ]
 
 THIRD_PARTY_APPS = [
@@ -95,7 +96,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///styleguide_example'),
+    'default': env.db('DATABASE_URL', default='postgres:///reset-password-demo'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -162,6 +163,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': []
 }
 
+# Email
+DEFAULT_FROM_EMAIL = 'admin@some-demo-site.com'
+FRONTEND_URL = 'https://some-demo-site.com'
+
+
 from .cors import *  # noqa
 from .sessions import *  # noqa
 from .celery import *  # noqa
+from .email import * # noqa

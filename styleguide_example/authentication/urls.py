@@ -4,6 +4,8 @@ from .apis import (
     UserLoginApi,
     UserLogoutApi,
     UserMeApi,
+    UserPasswordResetApi,
+    UserPasswordResetConfirmApi,
 )
 
 urlpatterns = [
@@ -21,5 +23,15 @@ urlpatterns = [
         'me/',
         UserMeApi.as_view(),
         name='me'
-    )
+    ),
+    path(
+        'password-reset/',
+        UserPasswordResetApi.as_view(),
+        name="password-reset"
+    ),
+    path(
+        'password-reset-confirm/',
+        UserPasswordResetConfirmApi.as_view(),
+        name="password-reset-confirm"
+    ),
 ]
